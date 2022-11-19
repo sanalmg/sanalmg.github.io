@@ -1,0 +1,307 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&family=Press+Start+2P&display=swap');
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html {
+    font-size: 100%;
+}
+body {
+    font-family: 'Poppins', sans-serif;
+    /* font-family: 'Press Start 2P', cursive; */
+}
+.mg-sidebar {
+    width: 40vw;
+    height: 100vh;
+    background-color: #1C3D58;
+    position: fixed;
+    top: 0;
+    right: 0;
+    transform: translateX(100%);
+    transition: all 0.5s ease-in-out;
+    padding: 3.5rem 0;
+    z-index: 99;
+}
+.mg-sidebar-header {
+    margin-bottom: 3rem;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+
+}
+.mg-sidebar-header h3 {
+    color: #fff;
+    font-weight: 300;
+    margin-top: 2rem;
+}
+.mg-sidebar-menu ul {
+    list-style-type: none;
+}
+.mg-sidebar-menu ul li {
+    margin: 1rem 0;
+}
+.mg-sidebar-menu .nav-item {
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    cursor: pointer;
+    background-color: #1C3D58;
+    width: 100%;
+    padding: 1rem 6rem;
+    /* box-shadow: 0px 0px 17px 1px rgba(0, 0, 0, 0.24);
+    border: 1px solid rgba(255, 255, 255, 0.09); */
+    position: relative;
+    z-index: 1;
+    transition: all 0.3s ease-in-out;
+
+}
+.nav-item .pointer {
+    opacity: 0;
+    transform: scale(0.2);
+    transition: all 0.8s ease-in-out;
+}
+.nav-item:hover {
+    color: #1C3D58;
+}
+.nav-item:hover .pointer {
+    opacity: 1;
+    transform: translateX(1rem) scale(1.1);    
+}
+.nav-item::before,
+.nav-item::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 50%;
+    transition: 0.4s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+    z-index: -1;
+}
+.nav-item::before {
+    top: 0;
+    left: 0;
+}
+.nav-item::after {
+    bottom: 0;
+    right: 0;
+}
+.nav-item:hover::before {
+    width: 100%;
+    background-color: #fff;
+}
+
+.nav-item:hover::after {
+    width: 100%;
+    background-color: #fff;
+}
+
+.mg-sidebar.active {
+    transform: translateX(0);
+}
+.mg-sidebar-footer {
+    margin-top: 2rem
+}
+.mg-header {
+    width: 100%;
+    min-height: 2.5rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: transparent;
+    padding: 1.875rem  3.75rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    z-index: 9;
+}
+.mg-header .mg-logo {
+    display: inline-block;
+    width: 6.25rem;
+}
+.mg-menu {
+    width: 3.75rem;
+    height: 3.75rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: all 0.4s ease-in-out;
+    position: fixed;
+    top: 1.5rem;
+    right: 1.5rem;
+    z-index: 999;
+}
+.mg-menu-btn {
+    width: 2.5rem;
+    height: 0.1875rem;
+    background-color: #1C3D58;
+    position: relative;
+    border-radius: 0.625rem;
+    transition: all 0.4s ease-in-out;
+}
+.mg-menu-btn::before, 
+.mg-menu-btn::after {
+    content: '';
+    position: absolute;
+    width: 60%;
+    height: 100%;
+    background-color: #1C3D58;
+    border-radius: 0.625rem;
+    transition: all 0.4s ease-in-out;
+}
+.mg-menu-btn::before {
+    transform: translateY(-0.625rem);
+}
+.mg-menu-btn::after {
+    transform: translate(60%, 0.625rem);
+}
+.mg-menu:hover {
+    background-color: #1C3D58;
+}
+.mg-menu:hover .mg-menu-btn,
+.mg-menu:hover .mg-menu-btn::before,
+.mg-menu:hover .mg-menu-btn::after {
+    background-color: #fff;
+}
+.mg-menu.active {
+    background-color: #fff;
+    width: 3rem;
+    height: 3rem;
+}
+.mg-menu.active .mg-menu-btn {
+    background-color: #1C3D58;
+}
+.mg-menu.active .mg-menu-btn::before,
+.mg-menu.active .mg-menu-btn::after {
+    background-color: #1C3D58;
+}
+.mg-menu.active .mg-menu-btn::before {
+    transform: translate(1.875rem);
+    opacity: 0;
+}
+.mg-menu.active .mg-menu-btn {
+    transform: rotate(45deg);
+    width: 1.7rem;
+}
+.mg-menu.active .mg-menu-btn::after {
+    width: 1.7rem;
+    transform: translate(0) rotate(90deg);
+}
+.mg-hero {
+    width: 100%;
+    min-height: 100vh;
+    background: url('../assets/images/hero-bg.png') no-repeat;
+    background-size: cover;
+    background-position: center right;
+    position: relative;
+}
+.mg-hero-content {
+    min-height: (100vh - 10rem);
+    display: flex;
+    flex-wrap: wrap;
+    padding-top: 9rem;
+}
+.mg-hero-left {
+    flex: 1;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    text-align: right;
+}
+.mg-hero-left h1 {
+    font-size: 4.375rem;
+    font-weight: 700;
+}
+.mg-hero-left h3 {
+    font-size: 1.875rem;
+    font-weight: 300;
+    margin-top: 1.5rem;
+}
+.mg-hero-left p {
+    font-size: 1.25rem;
+    font-family: 'Press Start 2P', sans-serif;
+    margin-top: 1.5rem;
+}
+.mg-hero-right {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+.mg-cards {
+    width: 100%;
+    min-height: 10rem;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background-color: #fff;
+    display: flex;
+    flex-wrap: wrap;
+}
+.card {
+    flex-basis: 33.33%;
+}
+.card.red {
+    background-color: #FF8192;
+}
+.card.orange {
+    background-color: #DB9E55;
+}
+.card.blue {
+    background-color: #EFF6FF;
+}
+
+/*-----Media Queries-----*/
+
+
+@media (max-width:991px) {
+    .mg-sidebar {
+        width: 100vw;
+        overflow-y: scroll;
+    }
+  
+    .mg-hero-left h1 {
+        font-size: 3rem;
+        font-weight: 700;
+    }
+    .mg-hero-left h3 {
+        font-size: 1.5rem;
+        font-weight: 300;
+        margin-top: 1.5rem;
+    }
+    .mg-hero-left p {
+        font-size: 0.75rem;
+        font-family: 'Press Start 2P', sans-serif;
+        margin-top: 1.5rem;
+    }
+}
+
+
+/*-----Utilities-----*/
+
+.img-fluid {
+    max-width: 100%;
+    display: block;
+    height: auto;
+}
+.text {
+    font-size: 15px;
+    font-weight: 400px;
+}
+.text-white {
+    color: #fff;
+}
+.text-dark {
+    color: #150505;
+}
+.text-center {
+    text-align: center;
+}
